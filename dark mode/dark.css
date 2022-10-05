@@ -1,0 +1,60 @@
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    transition: .4s;
+}
+
+.input{
+    visibility: hidden;
+}
+.label{
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background-color: lightgrey;
+    border-radius: 20px;
+}
+
+.circle{
+    width: 34px;
+    height: 34px;
+    background-color: white;
+    border-radius: 50%;
+    position:absolute;
+    top: 3px;
+    cursor: pointer;
+    left: 3px;
+    animation: toggleoff .4s linear forwards;
+}
+.input:checked + .label{ /*if input checked the lable will change acording to properties given below*/
+    background: pink;
+}
+.input:checked + .label .circle{
+    animation: toggleon .4s linear forwards;
+}
+
+@keyframes toggleon{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(40px);
+    }
+}
+
+@keyframes toggleoff{
+    0%{
+        transform: translateX(40px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
