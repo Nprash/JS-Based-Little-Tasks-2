@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Hearts</title>
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            /* background-color: black; */
+            overflow: hidden;
+            background: rgb(6,1,6);
+background: radial-gradient(circle, rgba(6,1,6,1) 44%, rgba(178,195,255,0) 100%);
+        }
+
+        span{
+            background-image: url(try.jpg);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            pointer-events: none;
+            position: absolute;
+            object-fit: cover;
+            background-size: cover;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: animate 6s linear;
+        }
+        @keyframes animate{
+            0%{
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                filter: hue-rotate(0);
+            }
+
+            100%{
+                transform: translate(-50%, -5000%);
+                opacity: 1;
+                filter: hue-rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <span></span> -->
+
+    <script>
+        const bodyel = document.querySelector('body');
+        bodyel.addEventListener("mousemove", (event)=>{
+            const xposition = event.offsetX; // for mouse move x and y axis values with respect to body, when mouse moves we get some value of it in terms of x and y axis
+            const yposition = event.offsetY;
+            const spanel = document.createElement("span");
+            //to style the span
+            spanel.style.left = xposition + "px"; // left and properties has given
+            spanel.style.top = yposition + "px";
+            const size = Math.random()*100;
+            spanel.style.width = size + "px"; //width & height has given dinamically by random method
+            spanel.style.height= size + "px";
+            bodyel.appendChild(spanel);
+            setTimeout(() => {
+                // spanel.remove(); // if you enable this span tagt will remove from body , nd no lnger stays the image part on the body 
+            }, 3000);
+
+        });
+
+    </script>
+</body>
+</html>
