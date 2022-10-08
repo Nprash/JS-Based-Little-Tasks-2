@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drums</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgb(98, 93, 179);
+            background: linear-gradient(90deg, rgba(98, 93, 179, 0.7987570028011204) 0%, rgba(210, 230, 70, 0.7175245098039216) 100%);
+        }
+
+        h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 50px;
+            white-space: nowrap;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 4px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .btn {
+            padding: 30px 50px;
+            font-size: 30px;
+            background-color: white;
+            border: none;
+            margin: 10px;
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-image: url(./image/snare.avif);
+            background-size: cover;
+            color: aliceblue;
+            font-family: cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            text-transform: capitalize;
+        }
+
+        .btn:hover {
+            color: tomato;
+        }
+
+        .btn:active {
+            background-size: 106%;
+        }
+        span{
+            position: absolute;
+            bottom: 100px;
+            right: 500px;
+            font-size: 18px;
+            /* align-items: center; */
+            box-shadow: -1px -2px 5px rgba(255, 255, 255, 0.25),
+            inset 8px 20px 20px rgba(0,0,0,0.2),
+            8px 20px 20px rgba(0,0,0,0.2),
+            inset -2px -4px 8px rgba(0,0,0,0.2) ;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Drum Kits <i class="fa-solid fa-drum"></i></h2>
+    <div class="container">
+        <!-- <button class="btn">Snare</button>
+        <button class="btn">Kick</button>
+        <button class="btn">Crash</button>
+        <button class="btn">Tom</button> -->
+    </div>
+
+    <div>
+        <span>try with your keyboard click on the initial letter of the sound</span>
+    </div>
+    <script>
+        const kit = ["snare", "kick", "flute", "guitar"];
+        const containerel = document.querySelector(".container");
+        kit.forEach((k) => {
+            const btnel = document.createElement("button"); //it will create 4 buttons with the respect of length of kit array
+            btnel.classList.add('btn');
+            btnel.innerText = k // to add text inside button nand the text was K refering each text found in kit array
+            btnel.style.backgroundImage = "url(image/" + k + ".avif)"; //to add images dynamically we use "url( foldername/  "arugument refered which reflects array of elements which names found as file name of an aimag"  .image extension )"
+            containerel.appendChild(btnel);
+            const audioel = document.createElement("audio");
+            audioel.src = "sound/" + k + ".mp3"  //adding file names dynamically here k referes every name found in array nd that name itself contains aaudio file with a file extension 
+            containerel.appendChild(audioel);
+
+            btnel.addEventListener("click", () => {
+                audioel.play();
+            })
+
+            window.addEventListener("keydown", (event) => {
+                if (event.key == k.slice(0, 1)) {
+                    audioel.play();
+                    btnel.style.transform = "scale(.9)";
+                    setTimeout(() => {
+                        btnel.style.transform = "scale(1)";
+                    }, 100)
+                }
+
+            })
+
+        })
+        // console.log( btnel.style.backgroundImage = "url()" )
+    </script>
+</body>
+
+</html>
