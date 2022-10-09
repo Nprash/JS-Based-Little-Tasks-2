@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    /* background-color: burlywood; */
+    background: rgb(98, 93, 179);
+    background: linear-gradient(90deg, rgba(98, 93, 179, 0.7987570028011204) 25%, rgba(21, 7, 52, 0.7175245098039216) 88%);
+}
+
+.slider-container {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: -1px -2px -2px rgba(255, 255, 255, 0.25),
+        inset 5px 15px, 20px rba(0, 0, 0, 0.2),
+        20px 30px, 30px rba(0, 0, 0, 0.2),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    object-fit: cover;
+}
+
+.image-container {
+
+    display: flex;
+    transition: transform 0.4s;
+    /*transform: translateX(-1500px);*/
+    /*this will get the ext image to the container*/
+
+}
+
+/* .icons{
+    display: flex;
+    justify-content: space-between;
+} */
+.btn {
+    position: absolute;
+    top: 50%;
+    font-size: 25px;
+    opacity: 0.5;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: white;
+}
+
+.btn.prev {
+    left: 10px;
+}
+
+.btn.next {
+    right: 10px;
+}
